@@ -14,7 +14,7 @@ instance helpFn :: Help s (->) i o where
 type Doc (s :: Symbol) i o = forall p. Help s p i o => p i o
 
 describe :: forall s i o a. Fail s => Documented s i o -> i -> o
-describe x = (\_ -> describe x) 0
+describe (Documented f) = f
 
 type DocArr l r = l r
 infixl 4 type DocArr as :->
